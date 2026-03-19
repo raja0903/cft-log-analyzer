@@ -1,93 +1,374 @@
-# log-analyzer
+# AI Log Analyzer
 
+An intelligent log analysis tool powered by Flask and Ollama that helps diagnose file transfer issues by analyzing log files, error codes, and debug information. The application uses machine learning (TF-IDF and cosine similarity) to match error messages and generates AI-powered troubleshooting suggestions.
 
+## Features
 
-## Getting started
+- **Intelligent Log Parsing**: Automatically parses log files and identifies error codes, warnings, and fatal errors
+- **Knowledge Base Matching**: Uses cosine similarity to match error messages against a comprehensive knowledge base
+- **AI-Powered Suggestions**: Leverages Ollama (LLaMA) to generate troubleshooting steps and possible causes
+- **Multiple File Support**: Process multiple log files simultaneously
+- **Debug File Analysis**: Analyzes debug files to extract DIAGI and DIAGP codes
+- **Web Interface**: User-friendly Flask-based web interface for file uploads and results visualization
+- **Secure File Handling**: Implements secure filename handling and content validation
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+## Prerequisites
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+Before installing and running this application, ensure you have the following installed:
 
-## Add your files
+### Required Software
 
-* [Create](https://docs.gitlab.com/user/project/repository/web_editor/#create-a-file) or [upload](https://docs.gitlab.com/user/project/repository/web_editor/#upload-a-file) files
-* [Add files using the command line](https://docs.gitlab.com/topics/git/add_files/#add-files-to-a-git-repository) or push an existing Git repository with the following command:
+- **Python 3.9 or higher**
+  - Download from: https://www.python.org/downloads/
+  - During installation, check "Add Python to PATH"
 
+- **Ollama** (for AI suggestions)
+  - Download from: https://ollama.ai/download
+  - Or install via command line:
+    ```bash
+    # Linux/macOS
+    curl -fsSL https://ollama.ai/install.sh | sh
+    
+    # Windows
+    winget install Ollama.Ollama
+    ```
+
+- **Git** (optional, for cloning the repository)
+  - Download from: https://git-scm.com/downloads
+
+### Ollama Model Setup
+
+After installing Ollama, download and run the LLaMA model:
+
+```bash
+# Pull the recommended model (qwen3:0.6b)
+ollama pull qwen3:0.6b
+
+# Verify the model is available
+ollama list
 ```
-cd existing_repo
-git remote add origin https://git-ext.ecd.axway.com/gss-noida/ai/log-analyzer.git
-git branch -M main
-git push -uf origin main
-```
 
-## Integrate with your tools
-
-* [Set up project integrations](https://git-ext.ecd.axway.com/gss-noida/ai/log-analyzer/-/settings/integrations)
-
-## Collaborate with your team
-
-* [Invite team members and collaborators](https://docs.gitlab.com/user/project/members/)
-* [Create a new merge request](https://docs.gitlab.com/user/project/merge_requests/creating_merge_requests/)
-* [Automatically close issues from merge requests](https://docs.gitlab.com/user/project/issues/managing_issues/#closing-issues-automatically)
-* [Enable merge request approvals](https://docs.gitlab.com/user/project/merge_requests/approvals/)
-* [Set auto-merge](https://docs.gitlab.com/user/project/merge_requests/auto_merge/)
-
-## Test and Deploy
-
-Use the built-in continuous integration in GitLab.
-
-* [Get started with GitLab CI/CD](https://docs.gitlab.com/ci/quick_start/)
-* [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/user/application_security/sast/)
-* [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/topics/autodevops/requirements/)
-* [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/user/clusters/agent/)
-* [Set up protected environments](https://docs.gitlab.com/ci/environments/protected_environments/)
-
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+**Note**: You can use other LLaMA models (e.g., `llama3.2:3b`, `llama3.1:8b`). Update the `OLLAMA_MODEL` environment variable accordingly in the `.env` file.
 
 ## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+
+### Step 1: Clone or Download the Repository
+
+**Option A: Clone using Git**
+```bash
+git clone https://git-ext.ecd.axway.com/gss-noida/ai/log-analyzer.git
+cd log-analyzer
+```
+
+**Option B: Download ZIP**
+1. Download the repository as a ZIP file
+2. Extract it to your desired location
+3. Navigate to the extracted directory
+
+### Step 2: Create Virtual Environment (Recommended)
+
+Creating a virtual environment isolates the project dependencies:
+
+**Windows:**
+```cmd
+python -m venv venv
+venv\Scripts\activate
+```
+
+**Linux/macOS:**
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+### Step 3: Install Python Dependencies
+
+Install the required Python packages:
+
+```bash
+pip install -r requirements.txt
+```
+
+This will install:
+- Flask 3.0.0+ (Web framework)
+- python-dotenv 1.0.0+ (Environment variable management)
+- requests 2.31.0+ (HTTP client for Ollama API)
+- scikit-learn 1.3.0+ (Machine learning for similarity matching)
+- Werkzeug 3.0.0+ (Utilities for Flask)
+
+### Step 4: Configure Environment Variables
+
+1. Copy the example environment file:
+   ```bash
+   # Windows
+   copy .env.example .env
+   
+   # Linux/macOS
+   cp .env.example .env
+   ```
+
+2. Edit the `.env` file to configure the application:
+   ```env
+   # Ollama Configuration
+   OLLAMA_URL=http://127.0.0.1:11434/api/generate
+   OLLAMA_MODEL=llama3.2:1b
+
+   # Analysis Thresholds
+   SIMILARITY_THRESHOLD=0.3
+   DIAGI_REMOTE_THRESHOLD=500
+
+   # Flask Configuration
+   FLASK_HOST=0.0.0.0
+   FLASK_PORT=5000
+   FLASK_DEBUG=False
+   ```
+
+**Configuration Options:**
+- `OLLAMA_URL`: URL of the Ollama API endpoint (default: `http://127.0.0.1:11434/api/generate`)
+- `OLLAMA_MODEL`: Name of the Ollama model to use (default: `llama3.2:1b`)
+- `SIMILARITY_THRESHOLD`: Minimum similarity score (0.0-1.0) for matching error messages (default: `0.3`)
+- `DIAGI_REMOTE_THRESHOLD`: DIAGI code value above which errors are considered "Remote" (default: `500`)
+- `FLASK_HOST`: Host address to bind the Flask server (default: `0.0.0.0`)
+- `FLASK_PORT`: Port number for the Flask server (default: `5000`)
+- `FLASK_DEBUG`: Enable Flask debug mode (default: `False`)
+
+### Step 5: Verify Required Knowledge Base Files
+
+Ensure the following knowledge base files exist in the project root:
+- `diagi_knowledgebase.json` - Contains DIAGI code information and events
+- `knowledgebase.json` - Contains error code mappings and explanations
+
+**Important**: These files are required for the application to function. If they are missing, the application will fail to process files.
+
+## Running the Application
+
+### Step 1: Start Ollama Service
+
+Make sure Ollama is running in the background:
+
+**Windows:**
+```cmd
+# Start Ollama in a separate terminal window
+ollama serve
+```
+
+**Linux/macOS:**
+```bash
+# Start Ollama in the background
+ollama serve &
+```
+
+Or run Ollama normally (it starts the server automatically):
+```bash
+ollama run qwen3:0.6b
+```
+
+### Step 2: Start the Flask Application
+
+With your virtual environment activated:
+
+```bash
+python AI_app.py
+```
+
+You should see output similar to:
+```
+INFO - Starting AI Log Analyzer on 0.0.0.0:5000
+INFO -  * Running on http://0.0.0.0:5000
+```
+
+### Step 3: Access the Web Interface
+
+Open your web browser and navigate to:
+
+- **Local access**: http://localhost:5000
+- **Network access**: http://YOUR_IP_ADDRESS:5000
 
 ## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+### 1. Upload Files
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+1. Enter the **IDT (Transfer ID)** you want to analyze
+2. Upload the **debug file** (required)
+3. Upload one or more **log files** (required)
+4. Click **Analyze**
+
+### 2. View Results
+
+The application will display:
+- **DIAGI Information**: DIAGI code, type (Local/Remote), event description
+- **AI Suggestions**: AI-generated troubleshooting steps and possible causes
+- **Error Analysis**: List of errors found in log files with:
+  - Error code
+  - Severity level (warning/error/fatal)
+  - Error message
+  - Closest matching knowledge base entry
+  - Explanation and consequence
+- **Log Statistics**: Total number of logs processed and errors found
+
+### 3. Interpret Results
+
+- **DIAGI Code**: Diagnostic code indicating the type of transfer issue
+- **AI Suggestions**: Review the AI-generated troubleshooting steps and consider implementing them
+- **Error Matches**: Check error codes against the knowledge base for standard solutions
+- **Similarity Score**: Higher scores indicate better matches between log messages and knowledge base entries
+
+## File Upload Requirements
+
+- **Debug File**: Required text file containing debug information with transfer ID details
+- **Log Files**: Required text files containing log entries in the format:
+  ```
+  MM/DD/YY HH:MM:SS XXXXXE Error message here
+  ```
+  Where:
+  - `MM/DD/YY`: Date
+  - `HH:MM:SS`: Time
+  - `XXXXX`: Error code prefix
+  - `E`: Error level (W=Warning, E=Error, F=Fatal)
+- **File Size**: Maximum 100MB per file
+- **Encoding**: UTF-8 or Latin-1
+
+## Troubleshooting
+
+### Application Won't Start
+
+**Issue**: Module import errors
+```
+ModuleNotFoundError: No module named 'flask'
+```
+**Solution**: Ensure you've activated the virtual environment and installed dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+### Ollama Connection Errors
+
+**Issue**: "Ollama error: Connection failed"
+**Solutions**:
+1. Ensure Ollama is running: `ollama serve`
+2. Check if Ollama is accessible: `curl http://127.0.0.1:11434/api/generate`
+3. Verify the model is installed: `ollama list`
+4. Check `OLLAMA_URL` in `.env` file
+
+**Issue**: "Ollama error: Timeout"
+**Solutions**:
+1. Ensure you have enough RAM for the model
+2. Try a smaller model (e.g., `llama3.2:1b` instead of `llama3.1:8b`)
+3. Increase timeout in `AI_app.py` (line 113) if needed
+
+### File Upload Errors
+
+**Issue**: "File is required" or "No valid log files provided"
+**Solution**: Ensure you're uploading valid text files with the correct format
+
+**Issue**: "Unable to decode file content"
+**Solution**: Ensure files are text-based (UTF-8 or Latin-1 encoded), not binary files
+
+### Knowledge Base Errors
+
+**Issue**: "Required knowledge base file missing"
+**Solution**: Ensure `diagi_knowledgebase.json` and `knowledgebase.json` exist in the project root directory
+
+### Port Already in Use
+
+**Issue**: "Address already in use" or similar error
+**Solution**: Change the port in `.env` file:
+```env
+FLASK_PORT=5001
+```
+Or stop the process using port 5000:
+```bash
+# Windows
+netstat -ano | findstr :5000
+taskkill /PID <PID> /F
+
+# Linux/macOS
+lsof -ti:5000 | xargs kill -9
+```
+
+## Project Structure
+
+```
+AI_log_analyser_final_CFT/
+├── AI_app.py                      # Main Flask application
+├── requirements.txt               # Python dependencies
+├── .env                           # Environment configuration (create from .env.example)
+├── .env.example                   # Example environment configuration
+├── .gitignore                     # Git ignore rules
+├── diagi_knowledgebase.json       # DIAGI code knowledge base
+├── knowledgebase.json             # Error code knowledge base
+├── templates/                     # HTML templates
+│   ├── upload.html                # File upload interface
+│   └── results.html               # Results display interface
+└── README.md                      # This file
+```
+
+## Development
+
+### Running in Debug Mode
+
+Enable debug mode for development:
+```env
+FLASK_DEBUG=True
+```
+
+This will enable:
+- Auto-reload on code changes
+- Detailed error messages
+- Interactive debugger
+
+### Viewing Logs
+
+Application logs are written to `ai_app.log` and also printed to the console.
+
+### Adding Custom Knowledge Base Entries
+
+Edit `knowledgebase.json` or `diagi_knowledgebase.json` to add custom error codes or DIAGI entries. Follow the existing JSON structure.
+
+## Security Considerations
+
+- File uploads are limited to 100MB per file
+- Filenames are sanitized using `secure_filename()`
+- Only text files are accepted (UTF-8/Latin-1 encoding)
+- Environment variables should not be committed to version control
+- Debug mode should be disabled in production
+
+## Performance Tips
+
+- Use smaller LLaMA models (e.g., `llama3.2:1b`) for faster AI responses
+- Adjust `SIMILARITY_THRESHOLD` to balance precision vs. recall
+- Process multiple log files at once for batch analysis
+- Ensure adequate RAM for Ollama (recommended: 8GB+ for llama3.2:1b)
 
 ## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+To contribute to this project:
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
 ## License
-For open source projects, say how it is licensed.
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+This project is proprietary software for internal use.
+
+## Support
+
+For issues or questions:
+- Check the Troubleshooting section above
+- Review application logs in `ai_app.log`
+- Contact the development team
+
+## Acknowledgments
+
+- **Flask**: Web framework
+- **Ollama**: Local LLM runtime
+- **scikit-learn**: Machine learning library for similarity matching
+- **LLaMA**: Meta's open-source language model
+
+---
+
+**Version**: 1.0.0  
+**Last Updated**: March 2026
