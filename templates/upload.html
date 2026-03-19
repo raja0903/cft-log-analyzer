@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Log Analyzer - Upload</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 100%;
+            padding: 40px;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            color: #2d3748;
+            font-size: 2rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            color: #718096;
+            font-size: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #2d3748;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .form-group input[type="text"] {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input[type="text"]:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .file-upload {
+            border: 2px dashed #e2e8f0;
+            border-radius: 8px;
+            padding: 30px 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            background: #f8fafc;
+        }
+
+        .file-upload:hover {
+            border-color: #667eea;
+            background: #f0f4ff;
+        }
+
+        .file-upload input[type="file"] {
+            display: none;
+        }
+
+        .file-upload-label {
+            display: block;
+            color: #718096;
+            font-size: 0.9rem;
+        }
+
+        .file-upload-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #667eea;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .info-box {
+            background: #ebf8ff;
+            border-left: 4px solid #4299e1;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+
+        .info-box p {
+            color: #2c5282;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .info-box strong {
+            font-weight: 600;
+        }
+
+        .error-box {
+            background: #fed7d7;
+            border-left: 4px solid #f56565;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        .error-box p {
+            color: #9b2c2c;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                max-height: 0;
+            }
+            to {
+                opacity: 1;
+                max-height: 200px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 25px;
+            }
+
+            .header h1 {
+                font-size: 1.6rem;
+            }
+
+            .file-upload {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔍 AI Log Analyzer</h1>
+            <p>Upload your log files for intelligent error diagnosis</p>
+        </div>
+
+        <div class="info-box">
+            <p><strong>How it works:</strong> Provide a Transfer ID (IDT) along with your log and debug files. Our AI-powered system will analyze the logs, identify errors, and provide actionable recommendations.</p>
+        </div>
+
+        {% if error %}
+        <div class="error-box">
+            <p><strong>Error:</strong> {{ error }}</p>
+        </div>
+        {% endif %}
+
+        <form method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="idt">Transfer ID (IDT)</label>
+                <input 
+                    type="text" 
+                    id="idt" 
+                    name="idt" 
+                    required 
+                    placeholder="e.g., 12345678"
+                    autocomplete="off"
+                >
+            </div>
+
+            <div class="form-group">
+                <label>Log Files (Multiple)</label>
+                <label class="file-upload" for="log_files">
+                    <div class="file-upload-icon">📄</div>
+                    <span class="file-upload-label" id="log_files_label">Click to select log file(s)</span>
+                    <input type="file" id="log_files" name="log_files" required multiple accept=".log,.txt">
+                </label>
+                <div id="selected_files_list" style="margin-top: 10px; color: #718096; font-size: 0.85rem;"></div>
+            </div>
+
+            <div class="form-group">
+                <label>Debug File</label>
+                <label class="file-upload" for="debug_file">
+                    <div class="file-upload-icon">🔧</div>
+                    <span class="file-upload-label" id="debug_file_label">Click to select debug file</span>
+                    <input type="file" id="debug_file" name="debug_file" required accept=".log,.txt">
+                </label>
+            </div>
+
+            <button type="submit" class="submit-btn">🚀 Analyze Logs</button>
+        </form>
+    </div>
+
+    <script>
+        // Update file upload labels when files are selected
+        document.getElementById('log_files').addEventListener('change', function(e) {
+            const files = e.target.files;
+            const label = document.getElementById('log_files_label');
+            const fileListDiv = document.getElementById('selected_files_list');
+            
+            if (files.length > 0) {
+                label.textContent = `${files.length} file(s) selected`;
+                
+                // Create list of selected files
+                let fileListHTML = '<strong>Selected files:</strong><br>';
+                for (let i = 0; i < files.length; i++) {
+                    fileListHTML += `• ${files[i].name}<br>`;
+                }
+                fileListDiv.innerHTML = fileListHTML;
+            } else {
+                label.textContent = 'Click to select log file(s)';
+                fileListDiv.innerHTML = '';
+            }
+        });
+
+        document.getElementById('debug_file').addEventListener('change', function(e) {
+            const fileName = e.target.files[0] ? e.target.files[0].name : 'Click to select debug file';
+            document.getElementById('debug_file_label').textContent = fileName;
+        });
+    </script>
+</body>
+</html>

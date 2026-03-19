@@ -1,0 +1,1509 @@
+[
+    {
+        "DIAGI Code": "DIAGI Code",
+        "Events": [
+            "Event"
+        ],
+        "Consequences": [
+            "Consequence"
+        ]
+    },
+    {
+        "DIAGI Code": "0",
+        "Events": [
+            "The transfer has been terminated correctly"
+        ],
+        "Consequences": [
+            "Execution of normal EXECRF or EXECSF end-of-transfer procedures"
+        ]
+    },
+    {
+        "DIAGI Code": "001",
+        "Events": [
+            "SYS: Error creating the message queue or allocating the memory"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE"
+        ]
+    },
+    {
+        "DIAGI Code": "002",
+        "Events": [
+            "Context definition error"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE"
+        ]
+    },
+    {
+        "DIAGI Code": "003",
+        "Events": [
+            "SYS - Context allocation error"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE"
+        ]
+    },
+    {
+        "DIAGI Code": "004",
+        "Events": [
+            "MQCONN"
+        ],
+        "Consequences": []
+    },
+    {
+        "DIAGI Code": "005",
+        "Events": [
+            "MQOPEN"
+        ],
+        "Consequences": []
+    },
+    {
+        "DIAGI Code": "006",
+        "Events": [
+            "MQPUT"
+        ],
+        "Consequences": []
+    },
+    {
+        "DIAGI Code": "100",
+        "Events": [
+            "FILE - File input/output error"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE\nIf there is a DIAGP for this, it is system-specific. For these errors, check the DIAGC or the log for more information."
+        ]
+    },
+    {
+        "DIAGI Code": "101",
+        "Events": [
+            "FILE - Error creating the receive file"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE\nIf there is a DIAGP for this, it is system-specific. For these errors, check the DIAGC or the log for more information."
+        ]
+    },
+    {
+        "DIAGI Code": "102",
+        "Events": [
+            "1.FILE - Error allocating the transfer file"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE in the requester mode\nIf there is a DIAGP for this, it is system-specific. For these errors, check the DIAGC or the log for more information."
+        ]
+    },
+    {
+        "DIAGI Code": "102",
+        "Events": [
+            "2.FILE - The receive file cannot be allocated (FDISP=OLD case)"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE\nThe file is deleted.\nIf there is a DIAGP for this, it is system-specific. For these errors, check the DIAGC or the log for more information."
+        ]
+    },
+    {
+        "DIAGI Code": "103",
+        "Events": [
+            "1.FILE - The file cannot be deleted before the receive file is created (FDISP = DELETE case)"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE in the requester mode\nIf there is a DIAGP for this, it is system-specific. For these errors, check the DIAGC or the log for more information."
+        ]
+    },
+    {
+        "DIAGI Code": "103",
+        "Events": [
+            "2.FILE - Error deleting the sent file, if deletion has been requested (FACTION = DELETE)"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE in the requester mode\nIf there is a DIAGP for this, it is system-specific. For these errors, check the DIAGC or the log for more information."
+        ]
+    },
+    {
+        "DIAGI Code": "104",
+        "Events": [
+            "1. FILE - Error opening the transfer file\n2. FILE - The receive file cannot be erased (FDISP = ERASE case): file opening problem\n3. FILE - Prior to reception, the receive file could not be opened to check that it was empty (FDISP = VERIFY case)"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE\nIf there is a DIAGP for this, it is system-specific. For these errors, check the DIAGC or the log for more information."
+        ]
+    },
+    {
+        "DIAGI Code": "105",
+        "Events": [
+            "1. FILE - Error closing the transfer file\n2. FILE - The receive file cannot be erased (FDISP = ERASE case: file closing problem\n3. FILE - Prior to reception, the receive file could not be closed after checking that it was empty (FDISP = VERIFY case)\n4. FILE - The sent file cannot be deleted following an erase request (FACTION = ERASE case)"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE\nIf there is a DIAGP for this, it is system-specific. For these errors, check the DIAGC or the log for more information."
+        ]
+    },
+    {
+        "DIAGI Code": "106",
+        "Events": [
+            "FILE - Error recording the current position in the transfer file (synchronization point setting)"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE\nIf there is a DIAGP for this, it is system-specific. For these errors, check the DIAGC or the log for more information."
+        ]
+    },
+    {
+        "DIAGI Code": "107",
+        "Events": [
+            "FILE - Error setting the pointer to a re-synchronization point in the file (for a transfer restart)"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE\nIf there is a DIAGP for this, it is system-specific. For these errors, check the DIAGC or the log for more information."
+        ]
+    },
+    {
+        "DIAGI Code": "108",
+        "Events": [
+            "1. FILE - Send file read error in the data transfer phase\n2. FILE - Before reception, the receive file could not be read to check that it was empty (FDISP = VERIFY case)"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE\nIf there is a DIAGP for this, it is system-specific. For these errors, check the DIAGC or the log for more information."
+        ]
+    },
+    {
+        "DIAGI Code": "109",
+        "Events": [
+            "FILE - Data write error in the receive file"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE\nIf there is a DIAGP for this, it is system-specific. For these errors, check the DIAGC or the log for more information."
+        ]
+    },
+    {
+        "DIAGI Code": "110",
+        "Events": [
+            "1. FILE - The send file does not exist\n2. FILE - The receive file to be created does not exist, even though the FDISP parameter requires it (FDISP=OLD). DIAGP is then set to NO OLD"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE in the requester mode\nIf there is a DIAGP for this, it is system-specific. For these errors, check the DIAGC or the log for more information."
+        ]
+    },
+    {
+        "DIAGI Code": "111",
+        "Events": [
+            "FILE - Insufficient space to create the file"
+        ],
+        "Consequences": [
+            "H status - ABORT in requester mode, EXECE in the requester mode\nIf there is a DIAGP for this, it is system-specific. For these errors, check the DIAGC or the log for more information."
+        ]
+    },
+    {
+        "DIAGI Code": "112",
+        "Events": [
+            "Nonexistent unit"
+        ],
+        "Consequences": []
+    },
+    {
+        "DIAGI Code": "113",
+        "Events": [
+            "FILE - The file to be created already exists, even though the FDISP parameter prohibits it (FDISP = NEW). DIAGP is then set to NO NEW"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE in the requester mode\nIf there is a DIAGP for this, it is system-specific. For these errors, check the DIAGC or the log for more information."
+        ]
+    },
+    {
+        "DIAGI Code": "114",
+        "Events": [
+            "FILE - Data write error in the receive file: file space full"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE\nIf there is a DIAGP for this, it is system-specific. For these errors, check the DIAGC or the log for more information."
+        ]
+    },
+    {
+        "DIAGI Code": "115",
+        "Events": [
+            "1. FILE - The transfer owner is not authorized to access the file\n2. FILE - The file cannot be deleted before the receive file has been created (FDISP = DELETE case)Protected file"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE in the requester mode\nPlease see the Access management sections for more information."
+        ]
+    },
+    {
+        "DIAGI Code": "115",
+        "Events": [
+            "3. FILE - The sent file cannot be deleted following a deletion request\n(FACTION = DELETE case) Protected file"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE\nPlease see the Access management sections for more information."
+        ]
+    },
+    {
+        "DIAGI Code": "120",
+        "Events": [
+            "PROT - Counter check error"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE\nThis may require a trace. Please see How to use ATM traces."
+        ]
+    },
+    {
+        "DIAGI Code": "121",
+        "Events": [
+            "USER - Interruption by the operator"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE"
+        ]
+    },
+    {
+        "DIAGI Code": "122",
+        "Events": [
+            "SYS - Error allocating memory when the transfer is executed"
+        ],
+        "Consequences": [
+            "D status - RESTART"
+        ]
+    },
+    {
+        "DIAGI Code": "123",
+        "Events": [
+            "FILE - Error setting the pointer to a resynchronization point in the file: the restart point requested by the partner is incorrect.\nThis can occur when the synchronized points are not flushed from the catalog (if the CFTCAT's updat parameter is greater than 1, the UCONF  cft.server.catalog.sync.enable is set to No , or both of these are true) due to an unexpected event such as a process, system, or disk crash.\n\nYou should set the following values to ensure that a restart is possible:\ncft.server.catalog.sync.enable = Yes\nCFTCAT id=xxxx,updat=1\nCFTPROT id=xxx, schkw=1,rchkw=1"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE"
+        ]
+    },
+    {
+        "DIAGI Code": "124",
+        "Events": [
+            "PROT - Error: transfer aborted"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE"
+        ]
+    },
+    {
+        "DIAGI Code": "126",
+        "Events": [
+            "FILE - LRECL error (record length)"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE"
+        ]
+    },
+    {
+        "DIAGI Code": "127",
+        "Events": [
+            "FILE - The receive file is not empty (FACTION = VERIFY)"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE"
+        ]
+    },
+    {
+        "DIAGI Code": "128",
+        "Events": [
+            "1. FILE - Error deselecting the file\n2. FILE - Error deselecting the receive file"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE\nH status - ABORT, EXECE"
+        ]
+    },
+    {
+        "DIAGI Code": "128",
+        "Events": [
+            "3. FILE - Error accessing the send file (allocating or opening), after a file erase request (FACTION = ERASE)"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE unless there is an allocation error in the sender server mode"
+        ]
+    },
+    {
+        "DIAGI Code": "129",
+        "Events": [
+            "FILE - Error during file decompression"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE"
+        ]
+    },
+    {
+        "DIAGI Code": "130",
+        "Events": [
+            "FILE - Error during file compression"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE"
+        ]
+    },
+    {
+        "DIAGI Code": "131",
+        "Events": [
+            "PROT - IDF different on ODETTE SELECT"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE"
+        ]
+    },
+    {
+        "DIAGI Code": "132",
+        "Events": [
+            "PARAM - Error accessing the parameter setting indirection file (list of files, list of partners)"
+        ],
+        "Consequences": [
+            "K status - ABORT\nIf the file does not exist, no transfer is executed. Only the generic request remains in the catalog. If an error occurs while reading the indirection file, the transfers generated for the items (files or partners) that have already been read are executed"
+        ]
+    },
+    {
+        "DIAGI Code": "133",
+        "Events": [
+            "PARAM - The FOR parameter in the CFTDEST command is invalid\n1. FOR=LOCAL when in the switching mode\n2. FOR=COMMUT when not in the switching mode"
+        ],
+        "Consequences": [
+            "There is no catalog entry. Check the CFTDEST object in the configuration."
+        ]
+    },
+    {
+        "DIAGI Code": "134",
+        "Events": [
+            "FILE - CFTEXIT call error"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE\nCheck the information in the cftlog and the cft.out files."
+        ]
+    },
+    {
+        "DIAGI Code": "135",
+        "Events": [
+            "1. FILE - The send file is locked"
+        ],
+        "Consequences": [
+            "D status - RESTART\nCheck that another process is not locking the file.\nH status - ABORT, EXECE\nCheck that another process is not locking the file."
+        ]
+    },
+    {
+        "DIAGI Code": "135",
+        "Events": [
+            "2. FILE - The receive file is locked"
+        ],
+        "Consequences": [
+            "D status - RESTART\nCheck that another process is not locking the file.\nH status - ABORT, EXECE\nCheck that another process is not locking the file."
+        ]
+    },
+    {
+        "DIAGI Code": "136",
+        "Events": [
+            "FILE - Duplication of the temporary file"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE\nCheck the WFNAME parameter in the CFTSEND or CFTRECV command."
+        ]
+    },
+    {
+        "DIAGI Code": "137",
+        "Events": [
+            "FILE - The file exists; the \"rename\" operation is, therefore, impossible"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE\nCheck the WFNAME parameter in the CFTSEND or CFTRECV command."
+        ]
+    },
+    {
+        "DIAGI Code": "138",
+        "Events": [
+            "1. FILE - No temporary file has been defined in the send mode, and the transfer requires the COPY mechanism. No transfer is triggered, and the generic request remains in the catalog"
+        ],
+        "Consequences": [
+            "State K - ABORT\nCheck the WFNAME parameter in the CFTSEND or CFTRECV command.\nCheck the WFNAME parameter in the CFTSEND or CFTRECV command."
+        ]
+    },
+    {
+        "DIAGI Code": "138",
+        "Events": [
+            "2. FILE - No temporary file has been defined in the receive mode for a file with versions or a transfer requiring de-concatenation (COPY)"
+        ],
+        "Consequences": [
+            "State K - ABORT, EXECE\nCheck the WFNAME parameter in the CFTSEND or CFTRECV command."
+        ]
+    },
+    {
+        "DIAGI Code": "139",
+        "Events": [
+            "Incorrect attributes file"
+        ],
+        "Consequences": [
+            "Check the cftlog file and the diagp/diagc in the catalog record.\nAlso, check the FLRECL/FRECFM parameters in the CFTRECV object."
+        ]
+    },
+    {
+        "DIAGI Code": "142",
+        "Events": [
+            "FILE - The \"rename\" operation failed"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE\nCheck the WFNAME parameter in the CFTRECV command."
+        ]
+    },
+    {
+        "DIAGI Code": "144",
+        "Events": [
+            "MVS transfer busy"
+        ],
+        "Consequences": [
+            "State D - Retry\nSpecific to z/OS environments."
+        ]
+    },
+    {
+        "DIAGI Code": "145",
+        "Events": [
+            "The SEND file is outside of the workingdir tree.\nThe temporary SEND file is outside of the workingdir tree."
+        ],
+        "Consequences": [
+            "K status - ABORT\nCheck the WORKINGDIR parameter in the CFTSEND object."
+        ]
+    },
+    {
+        "DIAGI Code": "148",
+        "Events": [
+            "1. The RECV file is outside of the workingdir tree.\n2. The temporary RECV file is outside of the workingdir tree."
+        ],
+        "Consequences": [
+            "K status - ABORT\nCheck the WORKINGDIR parameter in the CFTRECV object."
+        ]
+    },
+    {
+        "DIAGI Code": "150",
+        "Events": [
+            "PARAM—Could not access a file. This error may be due to several issues, such as an empty directory or the file's name not corresponding to an applied filter."
+        ],
+        "Consequences": [
+            "State K—ABORT. No transfers are triggered if the directory does not exist, and only the generic request remains in the catalog. If an error is detected when reading the directory, the transfers generated for the items (directory menus) that have already been read are triggered."
+        ]
+    },
+    {
+        "DIAGI Code": "152",
+        "Events": [
+            "FILE - Error during the concatenation phase at the start of the transfer or during the de-concatenation phase when sending the transfer."
+        ],
+        "Consequences": [
+            "State H - ABORT, EXECE\nThere was a problem with a homogeneous transfer. See Sending a group of files. Check the configuration - FNAME and WFNAME on the CFTSEND or CFTRECV object."
+        ]
+    },
+    {
+        "DIAGI Code": "153",
+        "Events": [
+            "FILE - Error during the transfer. The file has been overwritten."
+        ],
+        "Consequences": [
+            "State K - Short transfer cannot be restarted."
+        ]
+    },
+    {
+        "DIAGI Code": "154",
+        "Events": [
+            "An error occurred when trying to transcode a file using NCHARSET parameter in the CFTSEND command before a send."
+        ],
+        "Consequences": [
+            "Generates a DIAGI=730, DIAGP=ABO 399 on the remote side as the sender cannot transcode before sending.\nCheck the diagp/diagc in the catalog to have more information."
+        ]
+    },
+    {
+        "DIAGI Code": "155",
+        "Events": [
+            "This preprocessing error occurs when a preexec is specified but launching the exec file fails (usually because the file was not found, but it could be due to a busy or migrated file on z/OS [MVS])."
+        ],
+        "Consequences": [
+            "Generates:\nDIAGP: NO EXEC\nDIAGC: PREEXEC LAUNCH ERROR\nCheck the PREEXEC parameter in the SEND, RECV, CFTSEND, and CFTRECV commands."
+        ]
+    },
+    {
+        "DIAGI Code": "156",
+        "Events": [
+            "This error occurs if the maximum number of retries is reached when FACTION=RETRYRENAME."
+        ],
+        "Consequences": [
+            "Generates:\nDIAGP: RETRYRENAME\nPhasestep=K\nCheck these UCONF values:\ncft.server.transfer.rrename.retry_delay\ncft.server.transfer.rrename.max_retries\nThe file defined in the FNAME parameter in the CFTRECV object should not exist when the retry occurs. Transfer can be restarted."
+        ]
+    },
+    {
+        "DIAGI Code": "158",
+        "Events": [
+            "There was an error when Transfer CFT variables were replaced.\nThe script referenced by &fname in the CFTS68E message is not executed."
+        ],
+        "Consequences": [
+            "In the script &fname, modify the variable <var> indicated in the CFTS68E message."
+        ]
+    },
+    {
+        "DIAGI Code": "160",
+        "Events": [
+            "Handles the event 'no outstanding transfer or implicit declaration'."
+        ],
+        "Consequences": [
+            "No catalog entry is created."
+        ]
+    },
+    {
+        "DIAGI Code": "200",
+        "Events": [
+            "An error occurred on a child transfer of this parent (generic) transfer. Refer to the child transfer in error for more information."
+        ],
+        "Consequences": [
+            "State K - ABORT, EXECE"
+        ]
+    },
+    {
+        "DIAGI Code": "203",
+        "Events": [
+            "PROF=SIT non-priority transfer"
+        ],
+        "Consequences": []
+    },
+    {
+        "DIAGI Code": "220",
+        "Events": [
+            "PROT - FPDU reception"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE"
+        ]
+    },
+    {
+        "DIAGI Code": "221",
+        "Events": [
+            "PROT - Int/ext type match error: the type of a PI is not consistent with its conversion type in the external format (for example, a PI in DATE format to be converted to the STRING format)"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE"
+        ]
+    },
+    {
+        "DIAGI Code": "222",
+        "Events": [
+            "PROT - Mandatory PI missing in FPDU"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE"
+        ]
+    },
+    {
+        "DIAGI Code": "223",
+        "Events": [
+            "PROT - Invalid PI length"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE"
+        ]
+    },
+    {
+        "DIAGI Code": "224",
+        "Events": [
+            "PROT - Invalid PGI length"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE"
+        ]
+    },
+    {
+        "DIAGI Code": "225",
+        "Events": [
+            "PROT - PGI missing from the FPDU"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE"
+        ]
+    },
+    {
+        "DIAGI Code": "226",
+        "Events": [
+            "PROT - PGI embedded in another PGI"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE"
+        ]
+    },
+    {
+        "DIAGI Code": "230",
+        "Events": [
+            "PROT - Protocol error. A protocol error has been detected: DIAGP is set to the PeSIT or ODETTE code of the error detected"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE\nContact the Support team for this type of unexpected error. Before doing so, please collect as much information as possible regarding the transfer in error, including the remote partner information (product, configuration,...).\nThe 230 diagnostic codes may have different diagnostic protocol formats:\ndiagp = eEEsSS: An unexpected internal error when the event \"EE\" occurs during the \"SS\" state.\ndiagp = PDU iNN: The PDU parameter \"NN\" is incorrect."
+        ]
+    },
+    {
+        "DIAGI Code": "231",
+        "Events": [
+            "PROT - Invalid action"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE"
+        ]
+    },
+    {
+        "DIAGI Code": "232",
+        "Events": [
+            "PROT - Event not found. An interaction not recognized by the protocol mechanisms has been received in a given transfer context"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE"
+        ]
+    },
+    {
+        "DIAGI Code": "233",
+        "Events": [
+            "PROT - Message send operation refused by the protocol used. The following protocols do not support message send operations: PESIT SIT, PESIT EXT, ODETTE"
+        ],
+        "Consequences": [
+            "K status - ABORT"
+        ]
+    },
+    {
+        "DIAGI Code": "240",
+        "Events": [
+            "PROT - Time-out expired (RTO parameter)"
+        ],
+        "Consequences": [
+            "D status - RETRY/COMMUT\nFor more information, see Troubleshoot 240 or 740 RTO."
+        ]
+    },
+    {
+        "DIAGI Code": "241",
+        "Events": [
+            "Transfer time-out - requester"
+        ],
+        "Consequences": []
+    },
+    {
+        "DIAGI Code": "241",
+        "Events": [
+            "Transfer time-out - server"
+        ],
+        "Consequences": []
+    },
+    {
+        "DIAGI Code": "243",
+        "Events": [
+            "Network connection time-out"
+        ],
+        "Consequences": []
+    },
+    {
+        "DIAGI Code": "244",
+        "Events": [
+            "Pre-connection time-out"
+        ],
+        "Consequences": []
+    },
+    {
+        "DIAGI Code": "260",
+        "Events": [
+            "SSL - Security problem"
+        ],
+        "Consequences": [
+            "K state - ABORT\nDIAGP = PKI nnn\nnnn = SSL alert errors\nSee also, Troubleshooting SSL/TLS."
+        ]
+    },
+    {
+        "DIAGI Code": "261",
+        "Events": [
+            "SSL - Error linked to an internal PKI"
+        ],
+        "Consequences": [
+            "K state - ABORT\nDIAGP=PKI nnn\nnnn = SSL alert errors\nSee also Troubleshooting SSL/TLS."
+        ]
+    },
+    {
+        "DIAGI Code": "262",
+        "Events": [
+            "SSL - Error linked to the PKI system"
+        ],
+        "Consequences": [
+            "K state - ABORT\nDIAGP=PKIS nnn\nnnn = SSL alert errors\nSee also Troubleshooting SSL/TLS."
+        ]
+    },
+    {
+        "DIAGI Code": "263",
+        "Events": [
+            "SSL - Error linked to an external PKI"
+        ],
+        "Consequences": [
+            "K state - ABORT\nDIAGP=PKIE nnn\nnnn = SSL alert errors\nSee also Troubleshooting SSL/TLS."
+        ]
+    },
+    {
+        "DIAGI Code": "264",
+        "Events": [
+            "SFTP - The server's public and private keys do not match. The server authentication failed on the client side."
+        ],
+        "Consequences": [
+            "H state - CANCELED\nDIAGP= KEY\nCheck the SRVPUBKEY parameter for the CFTSSH direct=client profile that is being used.\nSee also Troubleshooting SFTP."
+        ]
+    },
+    {
+        "DIAGI Code": "278",
+        "Events": [
+            "SSL - Invalid security profile"
+        ],
+        "Consequences": [
+            "K state - ABORT"
+        ]
+    },
+    {
+        "DIAGI Code": "301",
+        "Events": [
+            "NET - Network addressing error (IP address) at the time of connection"
+        ],
+        "Consequences": [
+            "D status - COMMUT\nThe transfer will be retried for a minimum period equal to the WSCAN parameter of the CFTCAT command. The next partner address in the HOST parameter list (CFTTCP command) will be used for the next retry.\nIf the invalid address is the last one in the list, the next protocol in the PROT parameter list (CFTPART command) will be used for the next retry.\nIf the protocol used is the last in the list, the transfer is either switched to the backup partner (IPART parameter of the CFTPART command) or aborted (K status) with code 405 while maintaining the diagnostic code of the last retry"
+        ]
+    },
+    {
+        "DIAGI Code": "302",
+        "Events": [
+            "NET - Network link broken (cut-off, time-out) outside the connection phase. DIAGP is then set to VNRELI"
+        ],
+        "Consequences": [
+            "D status - RETRY/COMMUT\nUp to \"RETRYM\" retries are performed for the transfer and the access data. If the number of retries reaches the value in the RETRYM parameter, Transfer CFT switches the access data.\nThe partner access data for the next retry will relate to the next HOST parameter (CFTNET command), or the next PROT parameter (CFTPART command). The restart counter is reset to 0.\nIf the protocol used is the last in the list, the transfer is either switched to the backup partner (IPART parameter of the CFTPART command) or aborted with code 405 while maintaining the diagnostic code (DIAGP) of the last retry.\nSee Troubleshooting common transfer issues for more information."
+        ]
+    },
+    {
+        "DIAGI Code": "303",
+        "Events": [
+            "NET - Network parameter error at the time of connection"
+        ],
+        "Consequences": [
+            "D status - COMMUT\nThe transfer is retried using the next protocol in the PROT parameter list (CFTPART command) as the new partner access point.\nIf the protocol used is the last in the list, the transfer is either switched to the backup partner (IPART parameter of the CFTPART command) or aborted (K status) with code 405 while maintaining the diagnostic code of the last retry.\nCannot connect to the remote partner due to a local connection rejection. When using SFTP, check that the remote SAP value in CFTPART object is defined and correct."
+        ]
+    },
+    {
+        "DIAGI Code": "350",
+        "Events": [
+            "The user requesting the transfer is not authorized to perform it"
+        ],
+        "Consequences": [
+            "State H"
+        ]
+    },
+    {
+        "DIAGI Code": "351",
+        "Events": [
+            "The remote requester is not authorized to use the transfer. The transfer was in the H state. Transfer CFT is running in the server/sender mode."
+        ],
+        "Consequences": [
+            "State H"
+        ]
+    },
+    {
+        "DIAGI Code": "352",
+        "Events": [
+            "The remote requester is not authorized to create a transfer. Transfer CFT is running in the server/sender mode, and the transfer should have occurred via a CFTSEND IMPL=YES."
+        ],
+        "Consequences": [
+            "State H"
+        ]
+    },
+    {
+        "DIAGI Code": "401",
+        "Events": [
+            "PARAM - Embedded broadcast list explicitly refused"
+        ],
+        "Consequences": [
+            "K status - ABORT\nFor an explicit multi-partner request (PART parameter in the CFTDEST command), a single partner, itself defined as a partner list, aborts the request; only the generic list request set to the K status remains in the catalog. No transfer is executed.\nFor a multi-partner request via an indirection file (FNAME parameter in the CFTDEST command), only the requests prior to the error are executed"
+        ]
+    },
+    {
+        "DIAGI Code": "402",
+        "Events": [
+            "PARAM - The PROT parameter of the CFTPART command does not belong to the active protocol list (PROT parameter of the CFTPARM command)"
+        ],
+        "Consequences": [
+            "K status - ABORT, EXECE"
+        ]
+    },
+    {
+        "DIAGI Code": "403",
+        "Events": [
+            "PARAM: Invalid password"
+        ],
+        "Consequences": [
+            "No CAT\nThe diagi = 403 is displayed only in the cftlog file\nCFTp2E NPART=PARTSSL rejected DIAGI=403 <HOST=@IP_address>\nOn the requester, the transfer status is D with diagi = 909 and the diagp = RCO 301; therefore, the transfer is retried up to RETRYM times."
+        ]
+    },
+    {
+        "DIAGI Code": "404",
+        "Events": [
+            "PARAM: Open mode not authorized"
+        ],
+        "Consequences": [
+            "No CAT (in server mode)\nCheck that the FNAME=&NFNAME in the CFTSEND or CFTRECV object."
+        ]
+    },
+    {
+        "DIAGI Code": "405",
+        "Events": [
+            "OUT: Transfer CFT has tried all possible partner access points: HOST, PROT, IPART"
+        ],
+        "Consequences": [
+            "K status - ABORT, EXECE\nCheck the configuration of the CFTPART and CFTTCP objects.\nBefore reaching 405 diagi, multiple retries were executed. Check the cftlog file for information related to this transfer.\nAfter correcting the transfer, you can restart the transfer."
+        ]
+    },
+    {
+        "DIAGI Code": "406",
+        "Events": [
+            "1. OUT - Maximum number of retries reached (RESTART parameter).\nDIAGP is set to MAXRST\n2. AUTH - The required start time for execution of the transfer is outside the authorized time slot (OMINTIME / OMAXTIME); this partner has no other possible protocol. DIAGP is set to CALL OUT\n3. AUTH - The network resource associated with the protocol does not accept outgoing calls; there is no other possible protocol for this partner\nDIAGP is set to L 0B 022\n4. PARAM - There is no CFTN command for the partner and for the last protocol in the list (CFTPART PROT parameter). DIAGP is set to MAXRST\n5. OVER - Transfer CFT has reached the limit (RESTART parameter) of authorized retries for the last partner protocol (CFTPART PROT parameter). DIAGP is set to MAXRST\n6. PARAM - The SROUT parameter of the protocol cannot be used to execute the transfer; there is no other possible protocol for this partner. DIAGP is set to SROUT"
+        ],
+        "Consequences": [
+            "K status - ABORT, EXECE"
+        ]
+    },
+    {
+        "DIAGI Code": "408",
+        "Events": [
+            "PARAM - PART parameter not described by a CFTPART command"
+        ],
+        "Consequences": [
+            "K status - ABORT\nIf a single CFTPART command is missing from an explicit multi-partner request (PART parameter in the CFTDEST command), the request is aborted. Only the generic list request, set to the K status, remains in the catalog.\nNo transfer is executed.\nOnly transfers with no partner defined are halted for a multi-partner request via an indirection file (FNAME parameter in the CFTDEST command).\nThe other transfers are executed. Complete broadcasting (or collection) is unsuccessful without operator intervention (partner definition and transfer retry). The end-of-transfer procedure is not executed."
+        ]
+    },
+    {
+        "DIAGI Code": "409",
+        "Events": [
+            "PARAM - Unknown NPART parameter"
+        ],
+        "Consequences": [
+            "H status - ABORT\nCheck the correspondence between the PROT, NSPART, and NRPART parameters in the CFTPART object."
+        ]
+    },
+    {
+        "DIAGI Code": "410",
+        "Events": [
+            "PARAM - Unknown CFTPROT command"
+        ],
+        "Consequences": [
+            "K status - ABORT\nCheck that the PROT value in the CFTPART matches an active protocol PROT parameter of the CFTPARM object."
+        ]
+    },
+    {
+        "DIAGI Code": "411",
+        "Events": [
+            "AUTH - File identifier (IDF) not authorized"
+        ],
+        "Consequences": [
+            "K status - ABORT\nIf the IDF for one of the partners in an explicit multi-partner request (PART parameter in the CFTDEST command) is not authorized, the request is aborted; only the generic list request set to the K status remains in the catalog\nNo transfer is executed\nFor a multi-partner request via an indirection file (FNAME parameter in the CFTDEST command), only transfers, the IDFs which are not authorized for the partner (CFTAUTH command), are set to halted\nThe other transfers remain active.\nHowever, complete broadcasting (or collection) is unsuccessful without operator intervention (grant authorization to the partners and retry the transfer); the end of the transfer procedure is not executed"
+        ]
+    },
+    {
+        "DIAGI Code": "412",
+        "Events": [
+            "DATA - Catalog access error"
+        ],
+        "Consequences": [
+            "As the file could not be accessed, there is no change in the status or in the catalog DIAGI.\nThe CFTT21E should display in the log and contain GCS and GCR information that may be helpful for Axway support to diagnose the issue.\nFor example, this type of error could be caused by a corrupted catalog. If so, you could import and export the records to repair this."
+        ]
+    },
+    {
+        "DIAGI Code": "413",
+        "Events": [
+            "AUTH - File identifier not authorized"
+        ],
+        "Consequences": [
+            "H status - ABORT\nCheck the SAUTH/RAUTH parameters in the CFTPART object and the associated CFTAUTH objects."
+        ]
+    },
+    {
+        "DIAGI Code": "414",
+        "Events": [
+            "1. AUTH - The start time for execution of the transfer is outside the authorized time slot (MAXTIME / MAXDATE of the SEND / RECV command)\nDIAGP is then set to OUT TIME\n2. PARAM - The outgoing time slot of the partner is null (OMINTIME / OMAXTIME)\nThere is no intermediate partner\nDIAGP is then set to CALL OUT\n3. AUTH - No outgoing call authorized for the network resource (CFTnetwork CNXOUT=0)\nDIAGP is then set to NO CALL"
+        ],
+        "Consequences": [
+            "K status - ABORT\nSee CFTNET - Network resources and Network resources for more information on network resource depletion prevention."
+        ]
+    },
+    {
+        "DIAGI Code": "415",
+        "Events": [
+            "OVER - Maximum number of partners reached"
+        ],
+        "Consequences": [
+            "D status - NEXT"
+        ]
+    },
+    {
+        "DIAGI Code": "416",
+        "Events": [
+            "1. OVER - Maximum number of transfers reached (MAXTRANS parameter)\nThe transfer cannot be executed\nDIAGP is then set to MAXTRANS"
+        ],
+        "Consequences": [
+            "D status - NEXT\n\nPlease see Network resource depletion prevention (NRDP)."
+        ]
+    },
+    {
+        "DIAGI Code": "416",
+        "Events": [
+            "2. OVER - Maximum number of connections reached for the network resource\nThe transfer cannot be executed\nDIAGP is then set to MAXCNX"
+        ],
+        "Consequences": [
+            "D status - NEXT\nThis status corresponds to a transfer refusal by the Transfer CFT protocol task, even though the scheduler has not reached the MAXTRANS limit.\nThis occurs when the protocol task maintains active connections after transfers have ended. Please see Network resource depletion prevention (NRDP).\nWSCAN related behavior\nTechnically, the next retry is triggered wscan minutes after the previous try. However, sometimes you may have a Transfer CFT log where the 416 diagnostic codes are not evenly distributed (by the same time intervals). This may occur if the scheduling task believes resources are available and schedules a retry, but in reality, the resource is taken.\n\nUnix only - If the runtime path is too long, a diag 416 issue occurs, and a message similar to the following displays in the cft.out :\nCFTTCPS S_socket : start_soc : bind afunixCFTTCPS Invalid argument\nIf this error occurs, modify the path to the socket in the UCONF  cft.unix.stcp.afunix parameter according to the operating system limit, as shown below:\nAIX: 1023\nHP-UX: 92\nLinux: 108\nSolaris: 108"
+        ]
+    },
+    {
+        "DIAGI Code": "417",
+        "Events": [
+            "1. OVER - Maximum number of file tasks reached (MAXTASK parameter)\nThe transfer cannot be executed\n2. SYS- Insufficient system resources available to execute an EXIT task\nThe transfer cannot be executed"
+        ],
+        "Consequences": [
+            "D status - NEXT"
+        ]
+    },
+    {
+        "DIAGI Code": "418",
+        "Events": [
+            "OVER - The total number of transfers in progress exceeds one of the CNXIN, CNXOUT or CNXINOUT parameters for the partner\nThe transfer cannot be executed"
+        ],
+        "Consequences": [
+            "D status - RESTART\nIf the number of retries exceeds the value of the RESTART parameter (CFTPROT command), Transfer CFT switches to the access data of the next protocol for this partner. See Configure multi-node simultaneous transfers.\nSee also, Frequently asked questions and Configure multi-node simultaneous transfers."
+        ]
+    },
+    {
+        "DIAGI Code": "419",
+        "Events": [
+            "DATA - The transfer to be retried is not in the catalog at the server end"
+        ],
+        "Consequences": [
+            "ABORT\nCheck the information in the cftlog file."
+        ]
+    },
+    {
+        "DIAGI Code": "420",
+        "Events": [
+            "DATA - On reception of a REPLY-type message, the original transfer concerned by this reply is not found in the catalog at the server end"
+        ],
+        "Consequences": [
+            "ABORT"
+        ]
+    },
+    {
+        "DIAGI Code": "421",
+        "Events": [
+            "1. SYS - Error executing a Transfer CFTfile task"
+        ],
+        "Consequences": [
+            "D status - NEXT"
+        ]
+    },
+    {
+        "DIAGI Code": "421",
+        "Events": [
+            "2. SYS - Error executing a Transfer CFT EXIT task"
+        ],
+        "Consequences": [
+            "K status - ABORT"
+        ]
+    },
+    {
+        "DIAGI Code": "422",
+        "Events": [
+            "Unexpected YE phase/phasestep at the restart"
+        ],
+        "Consequences": [
+            "This DIAGI is related to the log message CFTT69E, where either:\nThe START command restarts the EXIT call.\nExecuting the KEEP command then SUBMIT command changes the transfer phasestep to available so that post-processing actions like submitting a script can be performed."
+        ]
+    },
+    {
+        "DIAGI Code": "423",
+        "Events": [
+            "SYS or PARAM - EXIT task creation error"
+        ],
+        "Consequences": [
+            "H status - ABORT\nCheck the diagp and the cftlog file for more information on the context."
+        ]
+    },
+    {
+        "DIAGI Code": "424",
+        "Events": [
+            "PARAM - CFTXLATE command not found for this transfer direction and the source and target alphabets"
+        ],
+        "Consequences": [
+            "H status - ABORT\nCheck the XLATE value in the CFTSEND/CFTRECV object and the associated CFTXLATE object."
+        ]
+    },
+    {
+        "DIAGI Code": "426",
+        "Events": [
+            "USER (Directory Exit) - Error in the Directory Exit task"
+        ],
+        "Consequences": [
+            "No CAT (server mode)\nState K - ABORT (requester mode)"
+        ]
+    },
+    {
+        "DIAGI Code": "428",
+        "Events": [
+            "Incoming address verified by the VERIFY parameter in the CFTTCP object was not accepted."
+        ],
+        "Consequences": [
+            "No CAT\nCheck the incoming address in the cftlog file and compare it to the host value in the CFTTCP object; the check is done on the VERIFY value (in terms of digits)."
+        ]
+    },
+    {
+        "DIAGI Code": "430",
+        "Events": [
+            "PARAM - Transfer is inactive on the requester side"
+        ],
+        "Consequences": [
+            "State D - ACT\nCheck the partner's state."
+        ]
+    },
+    {
+        "DIAGI Code": "431",
+        "Events": [
+            "USER (Security) - CFTAPPL card is absent"
+        ],
+        "Consequences": [
+            "No CAT\nThe transfer is not started, and the catalog has no entry. Additionally, the diagi is displayed only in the cftlog file."
+        ]
+    },
+    {
+        "DIAGI Code": "432",
+        "Events": [
+            "Duplicate transfer error"
+        ],
+        "Consequences": [
+            "Check the DUPLICAT parameter value in the CFTSEND or CFTRECV object."
+        ]
+    },
+    {
+        "DIAGI Code": "433",
+        "Events": [
+            "User/password error"
+        ],
+        "Consequences": [
+            "Check the SPASSWD/RPASSWD parameter values in the CFTSEND or CFTRECV object."
+        ]
+    },
+    {
+        "DIAGI Code": "434",
+        "Events": [
+            "AUTH - File identifier (default IDF) is not authorized"
+        ],
+        "Consequences": [
+            "K status - ABORT\nWhen cft.default_idf.enable = Yes , the default IDF is not authorized."
+        ]
+    },
+    {
+        "DIAGI Code": "435",
+        "Events": [
+            "WORKDIR"
+        ],
+        "Consequences": [
+            "The CFTSEND and CFTRECV models with the same ID have different working directories defined.\nSFTP issue. Check the workingdir value for the CFTSEND id=<ID> with IMPL=YES and CFTRECV id=<ID>."
+        ]
+    },
+    {
+        "DIAGI Code": "436",
+        "Events": [
+            "KEY"
+        ],
+        "Consequences": [
+            "The client key does not correspond to the server key.\nSFTP issue.\nCheck the CLIPUBKEY value in the CFTSSH direct=Client setting. This should correspond to an identifier in the local PKI database."
+        ]
+    },
+    {
+        "DIAGI Code": "451",
+        "Events": [
+            "1. PROT - (PeSIT) Reception of a protocol connection refusal (AckCONNECT FPDU). (Odette) Reception of a protocol connection refusal (ESID). DIAGP is then set to RELEASE\n2. PROT - (PeSIT) (Odette) Violation of the protocol specifications (unknown FPDU or invalid contents, for example). DIAGP is then set to ACO in or RCO in ennsnn\n3. PROT - (PeSIT)(Odette) Connection time-out reached without response (DISCTC parameter of the CFTPROT command). DIAGP is then set to TIMEOUT"
+        ],
+        "Consequences": [
+            "D status - RESTART"
+        ]
+    },
+    {
+        "DIAGI Code": "452",
+        "Events": [
+            "PROT - (PeSIT) (Odette) Reception of a negative message confirmation FPDU"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE"
+        ]
+    },
+    {
+        "DIAGI Code": "453",
+        "Events": [
+            "PROT - (PeSIT) (Odette) Reception of a negative creates a confirmation FPDU"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE"
+        ]
+    },
+    {
+        "DIAGI Code": "454",
+        "Events": [
+            "PROT - (PeSIT) Reception of a negative select confirmation FPDU"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE"
+        ]
+    },
+    {
+        "DIAGI Code": "455",
+        "Events": [
+            "PROT - (PeSIT) (Odette) Reception of a negative deselect confirmation FPDU"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE"
+        ]
+    },
+    {
+        "DIAGI Code": "456",
+        "Events": [
+            "PROT - (PeSIT) Reception of a negative open confirmation FPDU"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE"
+        ]
+    },
+    {
+        "DIAGI Code": "457",
+        "Events": [
+            "Reception of a negative closed confirmation"
+        ],
+        "Consequences": []
+    },
+    {
+        "DIAGI Code": "458",
+        "Events": [
+            "Reception of a negative read confirmation"
+        ],
+        "Consequences": []
+    },
+    {
+        "DIAGI Code": "459",
+        "Events": [
+            "PROT - (PeSIT) Reception of a negative write confirmation FPDU"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE"
+        ]
+    },
+    {
+        "DIAGI Code": "460",
+        "Events": [
+            "PROT - (PeSIT) Reception of a negative end-of-transfer confirmation FPDU"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE"
+        ]
+    },
+    {
+        "DIAGI Code": "461",
+        "Events": [
+            "Received an abort with diagnostics"
+        ],
+        "Consequences": []
+    },
+    {
+        "DIAGI Code": "462",
+        "Events": [
+            "No data was sent on the network."
+        ],
+        "Consequences": []
+    },
+    {
+        "DIAGI Code": "463",
+        "Events": [
+            "Logon entry not recognized."
+        ],
+        "Consequences": []
+    },
+    {
+        "DIAGI Code": "499",
+        "Events": [
+            "( ODETTE) CD okay"
+        ],
+        "Consequences": []
+    },
+    {
+        "DIAGI Code": "Codes with a value between 001 and 499 indicate a local issue; values between 501 and 999 correspond to a fault reported by the partner.\nTherefore, when troubleshooting, if the code is greater than 500, it refers to a remote issue. To find the actual DIAG, subtract 500 from the displayed code. For example, if the DIAG is 916, the issue is a remote problem corresponding to DIAG 416 (maximum number of transfers reached).",
+        "Events": [
+            "Codes with a value between 001 and 499 indicate a local issue; values between 501 and 999 correspond to a fault reported by the partner.\nTherefore, when troubleshooting, if the code is greater than 500, it refers to a remote issue. To find the actual DIAG, subtract 500 from the displayed code. For example, if the DIAG is 916, the issue is a remote problem corresponding to DIAG 416 (maximum number of transfers reached)."
+        ],
+        "Consequences": [
+            "Codes with a value between 001 and 499 indicate a local issue; values between 501 and 999 correspond to a fault reported by the partner.\nTherefore, when troubleshooting, if the code is greater than 500, it refers to a remote issue. To find the actual DIAG, subtract 500 from the displayed code. For example, if the DIAG is 916, the issue is a remote problem corresponding to DIAG 416 (maximum number of transfers reached)."
+        ]
+    },
+    {
+        "DIAGI Code": "500",
+        "Events": [
+            "Constant to add to a remote code"
+        ],
+        "Consequences": []
+    },
+    {
+        "DIAGI Code": "600",
+        "Events": [
+            "FILE - (PeSIT) (Odette) Transfer aborted by the remote end: file input/output error - PeSIT / Odette code: See DIAGP."
+        ],
+        "Consequences": [
+            "H status- ABORT, EXECE"
+        ]
+    },
+    {
+        "DIAGI Code": "604",
+        "Events": [
+            "FILE - (PeSIT) Transfer aborted by the remote end: file opening error"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE"
+        ]
+    },
+    {
+        "DIAGI Code": "605",
+        "Events": [
+            "FILE - (PeSIT) Transfer aborted by the remote end: file closing error"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE"
+        ]
+    },
+    {
+        "DIAGI Code": "610",
+        "Events": [
+            "FILE - (PeSIT) (Odette) Transfer aborted by the remote end: the file to be read does not exist"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE"
+        ]
+    },
+    {
+        "DIAGI Code": "611",
+        "Events": [
+            "FILE - (PeSIT) Transfer aborted by the remote end: insufficient space to create the file"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE"
+        ]
+    },
+    {
+        "DIAGI Code": "613",
+        "Events": [
+            "FILE - (PeSIT) Transfer aborted by the remote end: the file to be created already exists"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE"
+        ]
+    },
+    {
+        "DIAGI Code": "614",
+        "Events": [
+            "FILE - (PeSIT) Transfer aborted by the remote end: file space full"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE"
+        ]
+    },
+    {
+        "DIAGI Code": "620",
+        "Events": [
+            "PROT - (PeSIT) Transfer aborted by the remote end: counter control error"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE"
+        ]
+    },
+    {
+        "DIAGI Code": "621",
+        "Events": [
+            "PROT - (PeSIT) Transfer aborted by the remote end: interruption by the operator"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE"
+        ]
+    },
+    {
+        "DIAGI Code": "626",
+        "Events": [
+            "PROT - (PeSIT) (Odette) Transfer aborted by the remote end: error in record length"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE"
+        ]
+    },
+    {
+        "DIAGI Code": "627",
+        "Events": [
+            "FILE - (PeSIT) Transfer aborted on the remote end: The receive file is not empty (FDISP = VERIFY)"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE"
+        ]
+    },
+    {
+        "DIAGI Code": "635",
+        "Events": [
+            "FILE - (PeSIT) Transfer aborted by the remote end: file access conflict"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE"
+        ]
+    },
+    {
+        "DIAGI Code": "657",
+        "Events": [
+            "Errno"
+        ],
+        "Consequences": [
+            "Too many open files in the CFTSFTP process."
+        ]
+    },
+    {
+        "DIAGI Code": "660",
+        "Events": [
+            "REC (PeSIT) - Error 660, ASE 205 on the requester side"
+        ],
+        "Consequences": [
+            "H state - Transfer aborted by the remote end: no outstanding transfer"
+        ]
+    },
+    {
+        "DIAGI Code": "720",
+        "Events": [
+            "1. PROT - (PeSIT) Protocol abort by the remote end: incorrect FPDU (transmission error)\n2. PROT - (Odette) Protocol abort by the remote end: negotiation error"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE"
+        ]
+    },
+    {
+        "DIAGI Code": "722",
+        "Events": [
+            "PROT - (PeSIT) Protocol abort by the remote end: missing PI"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE"
+        ]
+    },
+    {
+        "DIAGI Code": "730",
+        "Events": [
+            "1. PROT - Protocol error\n2. PROT - (PeSIT) Transfer aborted by the remote peer (i.e. the Partner Side) due to protocol error - PeSIT code: See DIAGP.\n3. PROT - (Odette) Reception of an ESID FPDU"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE"
+        ]
+    },
+    {
+        "DIAGI Code": "740",
+        "Events": [
+            "NET - (PeSIT) Transfer aborted by the remote end: time-out - PeSIT code: 317"
+        ],
+        "Consequences": [
+            "D status - RETRY"
+        ]
+    },
+    {
+        "DIAGI Code": "850",
+        "Events": [
+            "PROT - (PeSIT) Protocol rejection by the remote end: authorization problem"
+        ],
+        "Consequences": [
+            "H Status - ABORT, EXECE"
+        ]
+    },
+    {
+        "DIAGI Code": "904",
+        "Events": [
+            "PROT - (PeSIT) Protocol rejection by the remote end: transfer denied (open mode, authorizations, for example)"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE"
+        ]
+    },
+    {
+        "DIAGI Code": "909",
+        "Events": [
+            "PROT - (PeSIT only) Protocol rejection by the remote end: requester identifier unknown"
+        ],
+        "Consequences": [
+            "D status - RESTART"
+        ]
+    },
+    {
+        "DIAGI Code": "916",
+        "Events": [
+            "PROT - (PeSIT only) Maximum number of transfers reached at the partner end (MAXTRANS parameter)"
+        ],
+        "Consequences": [
+            "D status - NEXT\nSee Configure multi-node simultaneous transfers."
+        ]
+    },
+    {
+        "DIAGI Code": "919",
+        "Events": [
+            "Restart context not available"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE"
+        ]
+    },
+    {
+        "DIAGI Code": "920",
+        "Events": [
+            "PROT - (PeSIT) Protocol rejection by the remote end: on reception of a REPLY-type message, the partner does not find the transfer concerned by this reply in its catalog"
+        ],
+        "Consequences": [
+            "D status - RESTART"
+        ]
+    },
+    {
+        "DIAGI Code": "925",
+        "Events": [
+            "Call collect refused by the remote system"
+        ],
+        "Consequences": [
+            "No CAT"
+        ]
+    },
+    {
+        "DIAGI Code": "928",
+        "Events": [
+            "Invalid caller number"
+        ],
+        "Consequences": [
+            "H status - ABORT, EXECE"
+        ]
+    },
+    {
+        "DIAGI Code": "930",
+        "Events": [
+            "PROT - Partner is inactive on the server side"
+        ],
+        "Consequences": [
+            "ACT status"
+        ]
+    },
+    {
+        "DIAGI Code": "933",
+        "Events": [
+            "PROT - PESIT\nError in password management parameter RPASSWD or SPASSWD: non-authorized requester identification\nPROT-SFTP\nKey has status INACT"
+        ],
+        "Consequences": [
+            "H Status - ABORT, EXECE"
+        ]
+    },
+    {
+        "DIAGI Code": "963",
+        "Events": [
+            "PROT - Protocol pre-connection phase rejected by the remote end (PeSIT LOGON): LOGON string rejected"
+        ],
+        "Consequences": [
+            "K status - ABORT, EXECE"
+        ]
+    },
+    {
+        "DIAGI Code": "970",
+        "Events": [
+            "PROT - Protocol pre-connection phase rejected by the remote end (PeSIT LOGON): password expired"
+        ],
+        "Consequences": [
+            "K status - ABORT, EXECE"
+        ]
+    }
+]
