@@ -1,0 +1,14 @@
+nohup: ignoring input
+2026-03-24 09:53:47,215 - INFO - Starting AI Log Analyzer on 0.0.0.0:5000
+ * Serving Flask app 'AI_app'
+ * Debug mode: off
+2026-03-24 09:53:47,217 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.128.155.60:5000
+2026-03-24 09:53:47,217 - INFO - [33mPress CTRL+C to quit[0m
+2026-03-24 09:53:51,816 - INFO - 10.151.248.156 - - [24/Mar/2026 09:53:51] "GET / HTTP/1.1" 200 -
+2026-03-24 09:53:55,847 - INFO - 10.151.248.156 - - [24/Mar/2026 09:53:55] "GET / HTTP/1.1" 200 -
+2026-03-24 10:48:49,771 - INFO - File 'test.txt' removed from results: No matching log lines found
+2026-03-24 10:48:49,783 - INFO - 10.151.248.156 - - [24/Mar/2026 10:48:49] "POST / HTTP/1.1" 200 -
+2026-03-24 10:49:14,586 - INFO - 10.151.248.156 - - [24/Mar/2026 10:49:14] "GET / HTTP/1.1" 200 -
