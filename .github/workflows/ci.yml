@@ -1,0 +1,32 @@
+name: CI - Docker Compose App
+
+on:
+  push:
+    branches:
+      - docker-setup
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Verify Docker
+      run: docker --version
+
+    - name: Verify Docker Compose
+      run: docker compose version
+
+    - name: Build and start services
+      run: docker compose up -d --build
+
+    - name: Wait for services to start
+      run: sleep 20
+
+    - name: Check running containers
+      run: docker ps
+
+    - name: Test Flask App
+      run: curl -f http://localhost:5001 || exit 1
