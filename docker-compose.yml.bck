@@ -1,0 +1,36 @@
+services:
+  flask-app:
+    build: .
+    container_name: log-analyzer-app
+    ports:
+      - "5001:5000"
+    env_file:
+      - .env
+    depends_on:
+      ollama:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - app-network
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama-service
+    ports:
+      - "11434:11434"
+    volumes:
+      - /home/amj/.ollama:/root/.ollama
+    restart: unless-stopped
+    networks:
+      - app-network
+    entrypoint: ["/bin/sh", "-c"]
+    command: >
+      ollama serve & sleep 5 && ollama pull qwen3:0.6b && wait
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:11434"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+networks:
+  app-network:
