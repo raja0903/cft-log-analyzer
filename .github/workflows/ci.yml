@@ -22,8 +22,18 @@ jobs:
     - name: Build and start services
       run: docker compose up -d --build
 
-    - name: Wait for services to start
-      run: sleep 20
+        #- name: Wait for services to start
+    - name: Wait for Flask to be healthy
+      run: |
+        for i in {1..10}; do
+          if curl -f http://localhost:5001; then
+            echo "Flask is ready"
+            exit 0
+          fi
+          echo "Waiting..."
+        done
+        exit 1
+    #      run: sleep 20
 
     - name: Check running containers
       run: docker ps

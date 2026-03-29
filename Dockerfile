@@ -21,4 +21,6 @@ ENV FLASK_HOST=0.0.0.0
 ENV FLASK_PORT=5000
 
 # Run app
-CMD ["python", "AI_app.py"]
+CMD ["gunicorn", "-b", "0.0.0.0:5000", "--workers", "2", "--timeout", "120", "AI_app:app"]
+#CMD ["gunicorn", "-b", "0.0.0.0:5000", "AI_app:app"]
+#CMD ["python", "AI_app.py"]

@@ -12,6 +12,16 @@ services:
       - .env
     networks:
       - app-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000"]
+      interval: 10s
+      timeout: 5s
+      retries: 5      
+
+        #    depends_on:
+        #      ollama:
+        #        condition: service_healthy
+
 
   ollama:
     build:
@@ -25,6 +35,15 @@ services:
       - .env
     networks:
       - app-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:11434"]
+      interval: 10s
+      timeout: 5s
+      retries: 5        
+    volumes:
+      - ollama-data:/home/amj/.ollama
 
+volumes:
+  ollama-data:        
 networks:
   app-network:
