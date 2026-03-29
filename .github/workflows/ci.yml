@@ -35,6 +35,6 @@ jobs:
       run: |
         cd /home/amj/log-analyzer
         git pull
-        docker compose down
+        docker compose down -v
         docker compose up -d --build
 
