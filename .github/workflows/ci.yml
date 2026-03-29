@@ -13,11 +13,11 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Verify Docker
-      run: docker --version
+        # - name: Verify Docker
+        #      run: docker --version
 
-    - name: Verify Docker Compose
-      run: docker compose version
+    - name: Stop Current Docker
+      run: docker compose down
 
     - name: Build and start services
       run: docker compose up -d --build
@@ -46,5 +46,5 @@ jobs:
         #        cd /home/amj/log-analyzer
         #        git pull
         #        docker compose down -v
-        #        docker compose up -d --build
+        #        docker c11111111111ompose up -d --build
 
