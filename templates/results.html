@@ -838,7 +838,7 @@
                     <div class="diag-info">
                         <div class="diag-item">
                             <label>DIAGI Code</label>
-                            <div class="value">{{ results.diag_info.get('DIAGI', 'Not found') }}</div>
+                            <div class="value"><a href="https://docs.axway.com/bundle/TransferCFT_310_allOS_en_HTML5/page/diagi_-_internal_diagnostic_codes.html" target="_blank" style="color: #4299e1; text-decoration: underline;">{{ results.diag_info.get('DIAGI', 'Not found') }}</div>
                         </div>
                         {% if 'diagi_type' in results.diag_info %}
                         <div class="diag-item">

@@ -3,7 +3,7 @@ name: CI - Docker Compose App
 on:
   push:
     branches:
-      - docker-setup
+      - docker-setup2
 
 jobs:
   build-and-test:
