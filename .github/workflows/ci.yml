@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-and-test:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
     - name: Checkout code
@@ -31,14 +31,10 @@ jobs:
     - name: Test Flask App
       run: curl -f http://localhost:5001 || exit 1
 
-    - name: Deploy to VM via SSH
-      uses: appleboy/ssh-action@v0.1.6
-      with:
-        host: ${{ secrets.VM_HOST }}
-        username: ${{ secrets.VM_USER }}
-        key: ${{ secrets.VM_SSH_KEY }}
-        script: |
-          cd /home/amj/log-analyzer
-          git pull
-          docker compose down
-          docker compose up -d --build
+    - name: Deploy
+      run: |
+        cd /home/amj/log-analyzer
+        git pull
+        docker compose down
+        docker compose up -d --build
+
