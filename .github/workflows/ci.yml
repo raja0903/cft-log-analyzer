@@ -31,10 +31,10 @@ jobs:
     - name: Test Flask App
       run: curl -f http://localhost:5001 || exit 1
 
-    - name: Deploy
-      run: |
-        cd /home/amj/log-analyzer
-        git pull
-        docker compose down -v
-        docker compose up -d --build
+        #    - name: Deploy
+        #      run: |
+        #        cd /home/amj/log-analyzer
+        #        git pull
+        #        docker compose down -v
+        #        docker compose up -d --build
 
