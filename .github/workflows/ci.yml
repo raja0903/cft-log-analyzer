@@ -22,7 +22,7 @@ jobs:
     - name: Build and start services
       run: docker compose up -d --build
 
-        #- name: Wait for services to start
+        #- name: Wait for snaylysis-ervices to start
     - name: Wait for Flask to be healthy
       run: |
         for i in {1..10}; do
